@@ -1,0 +1,46 @@
+Case 1 :
+[Spalart-Allmaras turbulence model]
+
+1) Boundary condition
+U : freestream
+p_rgh : freestream pressure
+
+Rest of scalar field
+: fixedValue/uniform value
+
+2) Result
+
+- Resolution of p_rgh is diverged.
+- Unreasonable pressure field was obtained.
+- Thus, rest of scalar field which is closely affected by pressure, could not be obtained.
+
+3) Treatment
+
+- Boundary condition for 'massBuoyantBoussinesqSimpleFoam' set to 'freestream' is not suitable.
+  [probably]
+- Other boundary condition should be used which is forcefully set by users.
+
+
+
+Case 2 :
+[kOmegaSST turbulence model]
+
+1) Boundary condition
+U : fixedValue with uniform stream velocity
+p_rgh : fixedValue with uniform pressure value
+
+Rest of scalar field
+: fixedValue/uniform value.
+
+2) Result
+
+- Resolution of p_rgh was converged.
+- Reasonable pressure/velocity field was obtained.
+- Vapor contaminent field was formed into a thin layer and seemed liked to be affected by the velocity field.
+- Finally, rest of scalar fields which is closely affected by pressure and velocity, were reasonably obtained.
+
+4) Temporal conclusion
+
+- If freestream boundary condition is necessary, current freestream boundary condition libararies should be
+  modified into the suitable form for 'massBuoyantBoussinesqSimpleFoam'.
+- If other boundary condition can be reasonable and used, freestream boundary condtion is then no longer determined.
