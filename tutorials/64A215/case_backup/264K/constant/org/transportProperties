@@ -1,0 +1,82 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.7.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+twoPhase
+{
+    transportModel  twoPhase;
+    phase1          phase1;
+    phase2          phase2;
+}
+
+//iso-Butane, 298K
+phase1
+{
+    transportModel  		Newtonian;
+    nu              		nu [ 0 2 -1 0 0 0 0 ] 1.74E-5;
+    rho             		rho [ 1 -3 0 0 0 0 0 ] 999;
+    thermalTransportModel	Fourier;
+    lambda			lambda [1 1 -3 -1 0 0 0] 0.2;
+    cp				cp [ 0 2 -2 -1 0 0 0] 4018;
+}
+
+phase2
+{
+    transportModel		Newtonian;
+    nu				nu [ 0 2 -1 0 0 0 0 ] 1.85E-6;
+    rho				rho [ 1 -3 0 0 0 0 0 ] 1.225;
+    thermalTransportModel	Fourier;
+    lambda			lambda [1 1 -3 -1 0 0 0] 0.02;
+    cp				cp [ 0 2 -2 -1 0 0 0] 1004;
+}
+
+sigma           sigma [ 1 0 -2 0 0 0 0 ] 0.01;
+T_0			T_0 [0 0 0 1 0 0 0] 298;
+DCv		DCv [0 0 -1 0 0 0 0] 1e-8;
+DCs		DCs [0 0 0 0 0 0 0] 1e-5;
+
+
+thermalPhaseChange
+{
+	model       HiLoNoPCVAlpha1; //InterfaceEquilibrium;
+	h_lv		h_lv  [0 2 -2 0 0 0 0 ] 334000;
+	T_sat		T_sat [0 0 0 1 0 0 0] 298;
+	CondThresh  0.75; //Interface threshold for condensing cell pairs
+	EvapThresh  0.01; //Interface threshold for evaporating cell pairs
+	RelaxFac    1.0; //No under-relaxation for now
+}
+
+solidPhaseModel
+{
+    model	none;
+    Lat		Lat [0 2 -2 0 0 0 0] 334000;
+    rhoRef	rhoRef [1 -3 0 0 0 0 0] 916;
+    Dc		Dc [1 -3 -1 0 0 0 0] 1;
+
+    // Porous Medium Model set-up
+    Tmelt	273.15;
+    Tsolid	273;
+    Cu		100000;
+    q		1e-5;
+    relax	0.9;
+}
+
+surfaceTensionForce
+{
+	model      Brackbill;
+}
+
+// ************************************************************************* //
