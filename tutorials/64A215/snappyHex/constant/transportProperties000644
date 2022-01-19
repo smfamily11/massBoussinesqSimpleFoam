@@ -1,0 +1,41 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      transportProperties;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+transportModel Newtonian;
+
+// Laminar viscosity
+nu              nu [0 2 -1 0 0 0 0] 1.5e-05;
+
+// Thermal expansion coefficient
+beta            beta [0 0 0 -1 0 0 0] 3.4e-03;
+
+// Reference temperature
+TRef            TRef [0 0 0 1 0 0 0] 293;
+
+// Laminar Prandtl number
+Pr              Pr [0 0 0 0 0 0 0] 0.9;
+
+// Turbulent Prandtl number
+Prt             Prt [0 0 0 0 0 0 0] 0.7;
+
+// Difffuison coefficient for water and air
+D_wa            D_wa [ 0 2 -1 0 0 0 0 ] 2.5e-5;
+
+// Difffuison coefficient for contaminants and air
+D_ca            D_ca [ 0 2 -1 0 0 0 0 ] 1.2e-5;
+
+// ************************************************************************* //
