@@ -1,0 +1,74 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : 5.x-197d9d3bf20a
+Exec   : blockMesh
+Date   : Oct 09 2020
+Time   : 01:20:58
+Host   : "ubuntu"
+PID    : 94352
+I/O    : uncollated
+Case   : /home/sid/OpenFOAM/OpenFOAM-5.0/applications/solvers/testSolvers/massBoussinesqSimpleFoam/tutorial/64A215/exerciseSnappy
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Creating block mesh from
+    "/home/sid/OpenFOAM/OpenFOAM-5.0/applications/solvers/testSolvers/massBoussinesqSimpleFoam/tutorial/64A215/exerciseSnappy/system/blockMeshDict"
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 0
+		Number of boundary faces : 6
+		Number of defined boundary faces : 6
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1
+    Block 0 cell size :
+        i : 0.172222 .. 0.172222
+        j : 0.183333 .. 0.183333
+        k : 0.5 .. 0.5
+
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (-1.2 -2.2 0) (5 2.2 0.5)
+  nPoints: 1850
+  nCells: 864
+  nFaces: 3516
+  nInternalFaces: 1668
+----------------
+Patches
+----------------
+  patch 0 (start: 1668 size: 72) name: topAndBottom
+  patch 1 (start: 1740 size: 24) name: inlet
+  patch 2 (start: 1764 size: 24) name: outlet
+  patch 3 (start: 1788 size: 864) name: symFront
+  patch 4 (start: 2652 size: 864) name: symBack
+
+End
+

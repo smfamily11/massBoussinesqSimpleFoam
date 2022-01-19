@@ -1,0 +1,102 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.0.x                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         steadyState;
+}
+
+gradSchemes
+{
+    default         Gauss linear;
+}
+
+divSchemes
+{
+    default       			 none;
+    div(phi,U)				bounded Gauss linearUpwind grad(U); // Gauss linearUpwindV Gauss linear; //
+    div(phi,T)				bounded Gauss limitedLinear 1; 
+    div(phi,k)				bounded Gauss limitedLinear 1; 
+    div(phi,epsilon)			bounded Gauss limitedLinear 1; 
+    div(phi,R)				bounded Gauss limitedLinear 1; 
+    div(R)				bounded Gauss linear;
+
+    div(phi,omega)			bounded Gauss upwind;
+
+    div(phi,nuTilda)			bounded Gauss upwind;
+
+    div((nuEff*dev2(T(grad(U)))))	 Gauss linear;
+
+    div((nuEff*dev(w_c(grad(U))))) 	 Gauss linear;
+    div(phi,w_c)			bounded Gauss limitedLinear 1;
+
+    div((nuEff*dev(w_w(grad(U))))) 	 Gauss linear;
+    div(phi,w_w)			bounded Gauss limitedLinear 1;
+}
+
+laplacianSchemes
+{
+    default        			none;
+    laplacian(nuEff,U) 			Gauss linear corrected; //uncorrected;
+    laplacian((1|A(U)),p) 		Gauss linear corrected; //uncorrected;
+    laplacian(kappaEff,T)		Gauss linear corrected; //uncorrected;
+    laplacian(DkEff,k) 			Gauss linear corrected; //uncorrected;
+    laplacian(DepsilonEff,epsilon)	Gauss linear corrected; //uncorrected;
+
+    laplacian(DepsilonEff,epsilon)	Gauss linear corrected; //uncorrected;
+
+    laplacian(DnuTildaEff,nuTilda)	Gauss linear corrected; //uncorrected;
+
+    laplacian(DomegaEff,omega)		Gauss linear corrected; //uncorrected;
+
+    laplacian(DREff,R) 			Gauss linear corrected; //uncorrected;
+
+    laplacian(D_ca,w_c)			Gauss linear corrected; //uncorrected;
+    laplacian((D_ca+(nut|1)),w_c) 	Gauss linear corrected; //uncorrected;
+
+    laplacian(D_wa,w_w)			Gauss linear corrected; //uncorrected;
+    laplacian((D_wa+(nut|1)),w_w) 	Gauss linear corrected; //uncorrected;
+}
+
+interpolationSchemes
+{
+    default         linear;
+}
+
+snGradSchemes
+{
+    default         corrected; //uncorrected;
+}
+
+fluxRequired
+{
+    default         no;
+    p_rgh           ;
+}
+
+wallDist
+{
+    method meshWave;
+}
+
+
+fluxRequired
+{
+    default         no;
+    p_rgh           ;
+}
+
+// ************************************************************************* //
