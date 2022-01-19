@@ -1,0 +1,46 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : 5.x-197d9d3bf20a
+Exec   : massBoussinesqSimpleFoam
+Date   : Dec 14 2020
+Time   : 23:39:57
+Host   : "ubuntu"
+PID    : 56915
+I/O    : uncollated
+Case   : /home/sid/OpenFOAM/OpenFOAM-5.0/applications/solvers/testSolvers/massBoussinesqSimpleFoam/tutorial/64A215/260K
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+SIMPLE: convergence criteria
+    field p_rgh	 tolerance 1e-06
+    field U	 tolerance 1e-06
+    field T	 tolerance 1e-06
+    field "(k|epsilon|omega)"	 tolerance 1e-05
+
+Reading thermophysical properties
+
+Reading field T
+
+
+
+--> FOAM FATAL ERROR: 
+cannot find file "/home/sid/OpenFOAM/OpenFOAM-5.0/applications/solvers/testSolvers/massBoussinesqSimpleFoam/tutorial/64A215/260K/0/T"
+
+    From function virtual Foam::autoPtr<Foam::ISstream> Foam::fileOperations::uncollatedFileOperation::readStream(Foam::regIOobject&, const Foam::fileName&, const Foam::word&, bool) const
+    in file global/fileOperations/uncollatedFileOperation/uncollatedFileOperation.C at line 505.
+
+FOAM exiting
+
