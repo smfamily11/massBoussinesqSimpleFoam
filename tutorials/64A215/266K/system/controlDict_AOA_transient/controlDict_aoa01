@@ -1,0 +1,113 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.7.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+libs
+(
+    "libforces.so"
+    "libOpenFOAM.so"
+    "libgroovyBC.so"
+    "libsimpleSwakFunctionObjects.so"
+);
+
+application     buoyantBoussinesqSimpleFoam; // simpleFoam; // 
+
+startFrom       latestTime;
+
+startTime       0.0;
+
+stopAt          endTime;
+
+endTime         3600;
+
+deltaT          0.001;
+
+writeControl    adjustableRunTime;
+
+writeInterval   3600;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression uncompressed;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+adjustTimeStep  on; // off; // 
+
+maxCo	0.5;
+
+
+functions
+{
+    forces
+    {
+	type			forces;
+	functionObjectsLibs	("libforces.so");
+
+	writeControl		timeStep;
+	writeInterval		100;
+
+	patches			(wing);
+
+	pName			p;
+	UName			U;
+	rho			rhoInf;
+	rhoInf			1.225;
+
+	log			true;
+
+	CofR			(0 0 0);
+    }
+
+    forceCoeffs
+    {
+	type			forceCoeffs;
+	funtionObjectsLibs	("libforces.so");
+
+	writeControl		timeStep;
+	writeInterval		100;
+
+	patches			(wing);
+
+	pName			p;
+	UName			U;
+
+	log			true;		//- write force, memonet coefficient fields
+
+	magUInf			15;		//- Free stream velocity
+	rho			rhoInf;
+	rhoInf			1.;		//- Free stream density
+
+	CofR			(0 0 0);	//- Center of rotation
+	liftDir			(0.01745 0.99985 0);	//- Drag direction
+	dragDir			(0.99985 0.0174 0);	//- Lift direction
+	pitchAxis		(0 1 0);	//- Pitch axis
+	lRef			0.5;		//- Reference length scale
+						//  for momentum calculations
+	Aref			0.1; // 0.045;		//- Reference area
+    }
+}
+
+
+// ************************************************************************* //
