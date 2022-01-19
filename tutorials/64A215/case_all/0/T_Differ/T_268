@@ -1,0 +1,87 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions          [0 0 0 1 0 0 0];
+
+internalField       uniform 275;
+
+boundaryField
+{
+
+    inlet
+    {
+	type		fixedValue;
+	value		$internalField;
+    }
+
+    outlet
+    {
+	type		zeroGradient; // inletOutlet; // 
+	inletValue	$internalField;
+	value		$internalField;
+    }
+
+    wing
+    {
+/*
+	type		fixedValue;
+	value		$internalField;
+*/
+	type		groovyBC; // fixedValue; // 
+
+	variables
+	(
+	    "rho_p=1.25;"
+	    "cp_p=1004;"
+	    "Twall=268;"
+	    "hc=12;"
+	    "sigma=5.67*pow(10,-8);"
+	    "emiss=0.2;"
+	    "rh=0.7;"
+	    "pv=pSat*rh;"
+	    "Kn=0.;"
+	    "Tinf=T*pow((1-(0.5-0.006*sqrt(pv))*(1-Kn)),0.25);"
+	);
+
+	valueExpression
+	    "Twall+hc*(T-Twall)/(rho_p*cp_p)+sigma*emiss*(pow(Tinf,4)-pow(Twall,4))/(rho_p*cp_p)";
+
+//	gradientExpression	"hc*(Tinf-Twall)/(rho_p*cp_p)+sigma*emiss*(pow(Tinf,4)-pow(Twall,4))/(rho_p*cp_p)";
+
+//	fractionExpression	"0";
+
+//	value		uniform 270;
+
+    }
+
+    topAndBottom
+    {
+	type		zeroGradient; // slip;
+    }
+
+    front
+    {
+	type		empty;
+    }
+
+    back
+    {
+	type		empty;
+    }
+
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
