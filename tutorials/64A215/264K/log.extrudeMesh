@@ -1,0 +1,43 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : 5.x-197d9d3bf20a
+Exec   : extrudeMesh
+Date   : Oct 07 2020
+Time   : 12:44:42
+Host   : "ubuntu"
+PID    : 87244
+I/O    : uncollated
+Case   : /home/sid/OpenFOAM/OpenFOAM-5.0/applications/solvers/testSolvers/massBoussinesqSimpleFoam/tutorial/64A215/264K
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Selecting extrudeModel linearNormal
+Extruding from patch using model linearNormal
+Not collapsing any edges after extrusion
+
+Extruding patches 1(symFront) on mesh "../snappyHex"
+
+Create mesh for time = 0
+
+Adding overall 0 processor patches.
+Testing:"../snappyHex/system/fvSchemes"
+Mesh bounding box : (-1.2 -2.2 0.5) (5 2.2 0.55)
+        with span : (6.2 4.4 0.05)
+Merge distance    : 0
+
+Writing mesh to "/home/sid/OpenFOAM/OpenFOAM-5.0/applications/solvers/testSolvers/massBoussinesqSimpleFoam/tutorial/64A215/264K/constant/region0"
+
+End
+
