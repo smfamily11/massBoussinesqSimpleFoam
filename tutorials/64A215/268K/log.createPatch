@@ -1,0 +1,54 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : 5.x-197d9d3bf20a
+Exec   : createPatch -overwrite
+Date   : Oct 08 2020
+Time   : 12:00:13
+Host   : "ubuntu"
+PID    : 92085
+I/O    : uncollated
+Case   : /home/sid/OpenFOAM/OpenFOAM-5.0/applications/solvers/testSolvers/massBoussinesqSimpleFoam/tutorial/64A215/268K
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Reading createPatchDict
+
+Adding new patch front as patch 6 from 
+{
+    type            empty;
+}
+
+Adding new patch back as patch 7 from 
+{
+    type            empty;
+}
+
+
+Moving faces from patch symFront to patch 6
+Moving faces from patch symBack to patch 7
+
+Doing topology modification to order faces.
+
+Not synchronising points.
+
+Removing patches with no faces in them.
+
+Removing zero-sized patch symFront type symmetryPlane at position 3
+Removing zero-sized patch symBack type symmetryPlane at position 4
+Removing patches.
+Writing repatched mesh to 0
+
+End
+
