@@ -1,0 +1,13 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+
+# Clean time directories only
+. $WM_PROJECT_DIR/bin/tools/CleanFunctions
+
+cd snappyHex
+cleanCase
+
+##-- Return to directory --##
+cd ../
+
+# ----------------------------------------------------------------- end-of-file
