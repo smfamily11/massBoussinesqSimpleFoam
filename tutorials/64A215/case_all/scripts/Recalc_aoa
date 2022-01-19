@@ -1,0 +1,129 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+application=`getApplication`
+
+./Allclean
+
+# Cycle #10 - AOA 09
+cp system/controlDict_AOA/controlDict_aoa09 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa09 0/U
+
+runApplication buoyantBoussinesqSimpleFoam
+
+mv postProcessing aero_aoa09
+
+./Allclean
+
+
+# Cycle #11 - AOA 10
+cp system/controlDict_AOA/controlDict_aoa10 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa10 0/U
+
+runApplication buoyantBoussinesqSimpleFoam
+
+mv postProcessing aero_aoa10
+
+./Allclean
+
+
+# Cycle #12 - AOA 11
+cp system/controlDict_AOA/controlDict_aoa11 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa11 0/U
+
+runApplication buoyantBoussinesqSimpleFoam
+
+mv postProcessing aero_aoa11
+
+./Allclean
+
+
+# Cycle #13 - AOA 12
+cp system/controlDict_AOA/controlDict_aoa12 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa12 0/U
+
+runApplication buoyantBoussinesqSimpleFoam
+
+mv postProcessing aero_aoa12
+
+./Allclean
+
+
+# Cycle #14 - AOA 13
+cp system/controlDict_AOA/controlDict_aoa13 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa13 0/U
+
+runApplication buoyantBoussinesqSimpleFoam
+
+mv postProcessing aero_aoa13
+
+./Allclean
+
+
+# Cycle #15 - AOA 14
+cp system/controlDict_AOA/controlDict_aoa14 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa14 0/U
+
+runApplication buoyantBoussinesqSimpleFoam
+
+mv postProcessing aero_aoa14
+
+./Allclean
+
+
+# Cycle #16 - AOA 15
+cp system/controlDict_AOA/controlDict_aoa15 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa15 0/U
+
+runApplication buoyantBoussinesqSimpleFoam
+
+mv postProcessing aero_aoa15
+
+#./Allclean
+
+# ----------------------------------------------------------------- end-of-file

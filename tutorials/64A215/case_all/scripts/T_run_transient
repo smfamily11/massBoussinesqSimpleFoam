@@ -1,0 +1,125 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+application=`getApplication`
+
+cp system/fvScheme/fvSchemes_transient system/fvSchemes
+cp system/controlDict_AOA_steady/controlDict_aoa00 system/controlDict
+
+# Cycle #1 - T 260
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/T_Differ/T_260 0/T
+
+runApplication massBoussinesqPimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T260
+
+mv postProcessing aero_T260
+
+./Allclean
+
+
+# Cycle #2 - T 262
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/T_Differ/T_262 0/T
+
+runApplication massBoussinesqPimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T262
+
+mv postProcessing aero_T262
+
+./Allclean
+
+
+# Cycle #3 - T 264
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/T_Differ/T_264 0/T
+
+runApplication massBoussinesqPimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T264
+
+mv postProcessing aero_T264
+
+./Allclean
+
+
+# Cycle #4 - T 266
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/T_Differ/T_266 0/T
+
+runApplication massBoussinesqPimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T266
+
+mv postProcessing aero_T266
+
+./Allclean
+
+
+# Cycle #5 - T 268
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/T_Differ/T_268 0/T
+
+runApplication massBoussinesqPimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268
+
+mv postProcessing aero_T268
+
+./Allclean
+
+
+# Cycle #6 - AOA 05
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/T_Differ/T_270 0/T
+
+runApplication massBoussinesqPimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T270
+
+mv postProcessing aero_T270
+
+./Allclean
+
+# ----------------------------------------------------------------- end-of-file

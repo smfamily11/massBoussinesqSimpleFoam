@@ -1,0 +1,347 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+application=`getApplication`
+
+cp system/fvScheme/fvSchemes_steady system/fvSchemes
+cp 0.org/T_Differ/T_260 0.org/T
+
+# Cycle #1 - T268_AOA 00
+cp system/controlDict_AOA_steady/controlDict_aoa00 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa00 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA00
+
+mv postProcessing aero_T268_aoa00
+
+./Allclean
+
+
+# Cycle #2 - T268_AOA 01
+cp system/controlDict_AOA_steady/controlDict_aoa01 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa01 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA01
+
+mv postProcessing aero_T268_aoa01
+
+./Allclean
+
+
+# Cycle #3 - T268_AOA 02
+cp system/controlDict_AOA_steady/controlDict_aoa02 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa02 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA02
+
+mv postProcessing aero_T268_aoa02
+
+./Allclean
+
+
+# Cycle #4 - T268_AOA 03
+cp system/controlDict_AOA_steady/controlDict_aoa03 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa03 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA03
+
+mv postProcessing aero_T268_aoa03
+
+./Allclean
+
+
+# Cycle #5 - T268_AOA 04
+cp system/controlDict_AOA_steady/controlDict_aoa04 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa04 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA04
+
+mv postProcessing aero_T268_aoa04
+
+./Allclean
+
+
+# Cycle #6 - T268_AOA 05
+cp system/controlDict_AOA_steady/controlDict_aoa05 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa05 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA05
+
+mv postProcessing aero_T268_aoa05
+
+./Allclean
+
+
+# Cycle #7 - T268_AOA 06
+cp system/controlDict_AOA_steady/controlDict_aoa06 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa06 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA06
+
+mv postProcessing aero_T268_aoa06
+
+./Allclean
+
+
+# Cycle #8 - T268_AOA 07
+cp system/controlDict_AOA_steady/controlDict_aoa07 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa07 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA07
+
+mv postProcessing aero_T268_aoa07
+
+./Allclean
+
+
+# Cycle #9 - T268_AOA 08
+cp system/controlDict_AOA_steady/controlDict_aoa08 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa08 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA08
+
+mv postProcessing aero_T268_aoa08
+
+./Allclean
+
+
+# Cycle #10 - T268_AOA 09
+cp system/controlDict_AOA_steady/controlDict_aoa09 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa09 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA09
+
+mv postProcessing aero_T268_aoa09
+
+./Allclean
+
+
+# Cycle #11 - T268_AOA 10
+cp system/controlDict_AOA_steady/controlDict_aoa10 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa10 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA10
+
+mv postProcessing aero_T268_aoa10
+
+./Allclean
+
+
+# Cycle #12 - T268_AOA 11
+cp system/controlDict_AOA_steady/controlDict_aoa11 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa11 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA11
+
+mv postProcessing aero_T268_aoa11
+
+./Allclean
+
+
+# Cycle #13 - T268_AOA 12
+cp system/controlDict_AOA_steady/controlDict_aoa12 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa12 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA12
+
+mv postProcessing aero_T268_aoa12
+
+./Allclean
+
+
+# Cycle #14 - T268_AOA 13
+cp system/controlDict_AOA_steady/controlDict_aoa13 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa13 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA13
+
+mv postProcessing aero_T268_aoa13
+
+./Allclean
+
+
+# Cycle #15 - T268_AOA 14
+cp system/controlDict_AOA_steady/controlDict_aoa14 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa14 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA14
+
+mv postProcessing aero_T268_aoa14
+
+./Allclean
+
+
+# Cycle #16 - T268_AOA 15
+cp system/controlDict_AOA_steady/controlDict_aoa15 system/controlDict
+
+runApplication extrudeMesh
+runApplication createPatch -overwrite
+
+cp -r 0.org 0
+
+cp 0/U15_AOA/U_aoa15 0/U
+
+runApplication massBoussinesqSimpleFoam
+
+foamToVTK
+
+mv VTK VTK_T268_AOA15
+
+mv postProcessing aero_T268_aoa15
+
+#./Allclean
+
+# ----------------------------------------------------------------- end-of-file
