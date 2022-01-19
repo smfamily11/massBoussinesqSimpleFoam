@@ -1,0 +1,55 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+defaultFieldValues
+(
+//    volScalarFieldValue alpha.air 1
+    volScalarFieldValue alpha1 1
+);
+
+/*
+// Option 1 - Partial porosity
+regions
+(
+    boxToCell
+    {
+        box (1 0 -0.1) (3 0.1 0.1);
+        fieldValues
+        (
+            volScalarFieldValue alpha.air 0
+            volScalarFieldValue alpha.water 1
+        );
+    }
+);
+*/
+
+// Option 2 - Covered porosity along the plate surface
+regions
+(
+    boxToCell
+    {
+        box (0 0 -1) (0.05 0.001 1);
+        fieldValues
+        (
+//            volScalarFieldValue alpha.air 0
+            volScalarFieldValue alpha1 0
+        );
+    }
+);
+
+
+// ************************************************************************* //

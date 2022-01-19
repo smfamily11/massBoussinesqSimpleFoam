@@ -1,0 +1,57 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      turbulenceProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+sol1
+{
+    type		solidificationMeltingSource;
+//    type		sublimationSolidificationSource;
+    active		yes;
+
+    selectionMode	cellZone;
+    cellZone		iceZone;
+
+    ySatRef		0.001;
+    Tmelt		273;
+    Lv			3340000;
+
+    thermoMode		lookup; // thermo;
+
+    beta		5.0e-4;
+
+    UName		U;
+
+    rhoRef		916;
+    rhoSol		916;
+    nuRef		1.5e-5;
+    k			0.002;
+    hc			12;
+
+    Cu			1.0e6;
+    q			1.0e-4;
+
+    a			30.11;
+    b			273.15;
+    c			17.625;
+    d			610.94;
+
+    pRef		101325;
+
+    L			1;
+}
+
+
+// ************************************************************************* //
